@@ -8,14 +8,17 @@ namespace GeigerComputerCounter
     public partial class FormComputerGeiger : Form
     {
         private Stopwatch _stopwatch;
-        private Stopwatch _lockStopwatch;
+        private Stopwatch _breakStopwatch;
+        private readonly GeigerService _service;
 
         public FormComputerGeiger()
         {
             InitializeComponent();
 
-            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+            _service = new GeigerService();
             _stopwatch = Stopwatch.StartNew();
+
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
         }
 
         private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
@@ -32,32 +35,37 @@ namespace GeigerComputerCounter
         {
             if (reason == SessionSwitchReason.SessionLock)
             {
-                EventsList.Items.Add($"Locked at: {DateTime.Now.ToShortTimeString()}");
+                Log($"Locked at: {DateTime.Now.ToShortTimeString()}");
                 _stopwatch.Stop();
-                _lockStopwatch = Stopwatch.StartNew();
+                _breakStopwatch = Stopwatch.StartNew();
             }
 
             if (reason == SessionSwitchReason.SessionUnlock)
             {
-                EventsList.Items.Add($"Unlocked at: {DateTime.Now.ToShortTimeString()}");
+                Log($"Unlocked at: {DateTime.Now.ToShortTimeString()}");
                 VerifyScreenBreakLength();
             }
         }
 
+        private void Log(string message)
+        {
+            EventsList.Items.Add(message);
+            EventsList.SetSelected(EventsList.Items.Count - 1, true);
+        }
+
         private void VerifyScreenBreakLength()
         {
-            _lockStopwatch.Stop();
-            
-            if (_lockStopwatch.Elapsed.Minutes < 5 && _lockStopwatch.Elapsed.Hours < 1)
+            _breakStopwatch.Stop();
+
+            if (_breakStopwatch.Elapsed < new TimeSpan(0, 5, 0))
             {
-                EventsList.Items.Add("** Screen lock was under 5 mins. Please take a longer break! **");
+                Log("** Screen lock was under 5 mins. Please take a longer break! **");
                 _stopwatch.Start();
-                return; 
-                
+                return;
             }
 
             _stopwatch = Stopwatch.StartNew();
-            _lockStopwatch.Reset();
+            _breakStopwatch.Reset();
         }
 
         private void OnTimerTick()
@@ -76,8 +84,7 @@ namespace GeigerComputerCounter
 
         private void SetColourPanel()
         {
-            var colourPanelService = new GeigerPanelService();
-            var status = colourPanelService.Get(_stopwatch.Elapsed);
+            var status = _service.Get(_stopwatch.Elapsed);
 
             ColourPanel.BackColor = status.Colour;
             BreakLabel.Visible = status.ShowLabel;

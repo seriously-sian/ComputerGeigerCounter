@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace GeigerComputerCounter
 {
-    public class GeigerPanelService
+    public class GeigerService
     {
         private TimeSpan _stopwatchElapsed;
 
@@ -20,62 +20,62 @@ namespace GeigerComputerCounter
 
         private bool GetShowOnTop()
         {
-            return StopwatchElapsed(1, 10, 0);
+            return StopwatchExceeded(1, 10, 0);
         }
 
         private bool GetShowLabel()
         {
-            return StopwatchElapsed(1, 0, 0);
+            return StopwatchExceeded(1, 0, 0);
         }
 
         private Color GetColour()
         {
-            if (StopwatchElapsed(1, 15, 0))
+            if (StopwatchExceeded(1, 15, 0))
             {
                 return Color.FromArgb(210, 0, 0);
             }
 
-            if (StopwatchElapsed(1, 10, 0))
+            if (StopwatchExceeded(1, 10, 0))
             {
                 return Color.FromArgb(210, 90, 0);
             }
 
-            if (StopwatchElapsed(1, 5, 0))
+            if (StopwatchExceeded(1, 5, 0))
             {
                 return Color.FromArgb(210, 120, 0);
             }
 
-            if (StopwatchElapsed(1, 0, 0))
+            if (StopwatchExceeded(1, 0, 0))
             {
                 return Color.FromArgb(210, 150, 0);
             }
 
-            if (StopwatchElapsed(0, 55, 0))
+            if (StopwatchExceeded(0, 55, 0))
             {
                 return Color.FromArgb(210, 180, 0);
             }
 
-            if (StopwatchElapsed(0, 50, 0))
+            if (StopwatchExceeded(0, 50, 0))
             {
                 return Color.FromArgb(210, 210, 0);
             }
 
-            if (StopwatchElapsed(0, 45, 0))
+            if (StopwatchExceeded(0, 45, 0))
             {
                 return Color.FromArgb(180, 210, 0);
             }
 
-            if (StopwatchElapsed(0, 40, 0))
+            if (StopwatchExceeded(0, 40, 0))
             {
                 return Color.FromArgb(150, 210, 0);
             }
 
-            if (StopwatchElapsed(0, 35, 0))
+            if (StopwatchExceeded(0, 35, 0))
             {
                 return Color.FromArgb(120, 210, 0);
             }
 
-            if (StopwatchElapsed(0, 30, 0))
+            if (StopwatchExceeded(0, 30, 0))
             {
                 return Color.FromArgb(90, 210, 0);
             }
@@ -83,11 +83,9 @@ namespace GeigerComputerCounter
             return Color.FromArgb(0, 210, 0);
         }
 
-        private bool StopwatchElapsed(int hourLimit, int minuteLimit, int secondLimit)
+        private bool StopwatchExceeded(int hour, int minute, int second)
         {
-            return _stopwatchElapsed.Hours >= hourLimit &&
-                   _stopwatchElapsed.Minutes >= minuteLimit &&
-                   _stopwatchElapsed.Seconds >= secondLimit;
+            return _stopwatchElapsed >= new TimeSpan(hour, minute, second);
         }
     }
 }
