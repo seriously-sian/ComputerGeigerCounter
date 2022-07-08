@@ -1,10 +1,10 @@
 # ComputerGeigerCounter
 
-Tracks how long you've had your computer unlocked (and therefore, presumeably, working). Encourages you to take a break for at least 5 minutes by gradually changing colour. 
+Tracks how long you've had your computer unlocked (and therefore, presumeably, working). Encourages you to take a break for at least 5 minutes by gradually changing colour from green to red. 
 
 ## Run on startup
 
-I find it super valuable to run the app on startup because then I don't have to remember to run the app. If you want the app to run on startup (which ):
+I find it super valuable to run the app on startup because then I don't have to remember to run the app. If you want the app to run on startup:
 
 1. Open the solution in your preferred Visual Studio. 
 2. Change the drop down from Debug to Release
