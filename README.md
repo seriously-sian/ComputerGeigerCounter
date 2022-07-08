@@ -8,6 +8,9 @@ I find it super valuable to run the app on startup because then I don't have to 
 
 1. Open the solution in your preferred Visual Studio. 
 2. Change the drop down from Debug to Release
+
+![image](https://user-images.githubusercontent.com/29092573/177966781-89f255c1-4522-49b6-a8e7-e35b9e6f8a7c.png)
+
 3. Build the solution
 4. Go to the solution bin folder
 5. Go to Release -> netcoreapp3.1
