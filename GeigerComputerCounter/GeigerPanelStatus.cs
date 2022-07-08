@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace GeigerComputerCounter
+namespace ComputerGeigerCounter
 {
     public class GeigerPanelStatus
     {
