@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -14,7 +13,7 @@ namespace ComputerGeigerCounter
         private Stopwatch _breakStopwatch;
         private GeigerService _service;
         private readonly AppSettings _appSettings;
-        private string SettingsJsonPath => "../../../settings.json";
+        private string SettingsJsonPath => "settings.json";
 
         public FormComputerGeiger()
         {
@@ -26,6 +25,7 @@ namespace ComputerGeigerCounter
             if (!File.Exists(SettingsJsonPath))
             {
                 _appSettings = AppSettings.DefaultSettings();
+                WriteSettingsToFile();
             }
             else
             {
@@ -132,6 +132,7 @@ namespace ComputerGeigerCounter
                 themeButton.Text = "Light";
             }
 
+            WriteSettingsToFile();
             SetTheme();
         }
 

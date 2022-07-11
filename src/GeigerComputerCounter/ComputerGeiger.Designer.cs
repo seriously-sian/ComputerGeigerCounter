@@ -57,6 +57,7 @@
             this.TimeSinceUnlocked.Name = "TimeSinceUnlocked";
             this.TimeSinceUnlocked.Size = new System.Drawing.Size(440, 32);
             this.TimeSinceUnlocked.TabIndex = 1;
+            this.TimeSinceUnlocked.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // timer
             // 
@@ -94,15 +95,15 @@
             // 
             // BreakLabel
             // 
-            this.BreakLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BreakLabel.AutoSize = true;
             this.BreakLabel.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BreakLabel.ForeColor = System.Drawing.Color.Ivory;
-            this.BreakLabel.Location = new System.Drawing.Point(91, 36);
+            this.BreakLabel.Location = new System.Drawing.Point(90, 34);
             this.BreakLabel.Name = "BreakLabel";
             this.BreakLabel.Size = new System.Drawing.Size(252, 32);
             this.BreakLabel.TabIndex = 1;
             this.BreakLabel.Text = "Take a screen break!";
+            this.BreakLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.BreakLabel.Visible = false;
             // 
             // themeButton
