@@ -17,7 +17,7 @@ after_build:
 - ps: >-
     $buildPath = Resolve-Path ".\src\GeigerComputerCounter\bin\Release\*"
     Write-Host "Zipping $buildPath"
-    7z a noobot.zip "$buildPath\*"
+    7z a geiger-counter.zip "$buildPath\*"
 test: off
 artifacts:
 - path: geiger-counter.zip

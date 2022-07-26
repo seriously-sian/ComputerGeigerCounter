@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComputerGeiger));
             this.TimeSinceUnlocked = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.EventsList = new System.Windows.Forms.ListBox();
@@ -95,6 +96,7 @@
             // 
             // BreakLabel
             // 
+            this.BreakLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BreakLabel.AutoSize = true;
             this.BreakLabel.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BreakLabel.ForeColor = System.Drawing.Color.Ivory;
@@ -114,7 +116,7 @@
             this.themeButton.ForeColor = System.Drawing.Color.White;
             this.themeButton.Location = new System.Drawing.Point(58, 17);
             this.themeButton.Name = "themeButton";
-            this.themeButton.Size = new System.Drawing.Size(135, 26);
+            this.themeButton.Size = new System.Drawing.Size(124, 26);
             this.themeButton.TabIndex = 3;
             this.themeButton.Text = "Dark";
             this.themeButton.UseVisualStyleBackColor = false;
@@ -125,9 +127,9 @@
             this.ColourFadeButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ColourFadeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColourFadeButton.ForeColor = System.Drawing.Color.Black;
-            this.ColourFadeButton.Location = new System.Drawing.Point(296, 17);
+            this.ColourFadeButton.Location = new System.Drawing.Point(310, 17);
             this.ColourFadeButton.Name = "ColourFadeButton";
-            this.ColourFadeButton.Size = new System.Drawing.Size(135, 26);
+            this.ColourFadeButton.Size = new System.Drawing.Size(124, 26);
             this.ColourFadeButton.TabIndex = 4;
             this.ColourFadeButton.Text = "Blue to Red";
             this.ColourFadeButton.UseVisualStyleBackColor = true;
@@ -152,7 +154,7 @@
             // ColourFadeLabel
             // 
             this.ColourFadeLabel.AutoSize = true;
-            this.ColourFadeLabel.Location = new System.Drawing.Point(218, 23);
+            this.ColourFadeLabel.Location = new System.Drawing.Point(232, 23);
             this.ColourFadeLabel.Name = "ColourFadeLabel";
             this.ColourFadeLabel.Size = new System.Drawing.Size(72, 15);
             this.ColourFadeLabel.TabIndex = 7;
@@ -190,10 +192,11 @@
             this.Controls.Add(this.SettingsGroupBox);
             this.Controls.Add(this.ColourPanel);
             this.Controls.Add(this.TimeSinceUnlocked);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormComputerGeiger";
-            this.ShowIcon = false;
             this.Text = "Computer Geiger";
             this.ColourPanel.ResumeLayout(false);
             this.ColourPanel.PerformLayout();
